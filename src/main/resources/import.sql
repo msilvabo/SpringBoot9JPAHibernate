@@ -1,0 +1,10 @@
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'John', 'Doe', 'Java');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Jane', 'Doe', 'Python');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Alice', 'Smith', 'C++');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Bob', 'Johnson', 'JavaScript');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Charlie', 'Brown', 'Ruby');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Diana', 'Prince', 'Go');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Eve', 'Adams', 'Swift');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Frank', 'Clark', 'Kotlin');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Grace', 'Hopper', 'Assembly');
+INSERT INTO persons (id, name, lastname, programming_language) VALUES (nextval('persons_seq'), 'Hank', 'Pym', 'PHP');
