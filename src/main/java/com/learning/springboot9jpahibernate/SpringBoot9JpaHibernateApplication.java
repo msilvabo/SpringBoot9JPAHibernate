@@ -25,5 +25,11 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
         List<Person> persons = (List<Person>) repository.findByProgrammingLanguageAndName("Java", "Eve");
         System.out.println("---- LISTADO DE PERSONAS ----");
         persons.stream().forEach(person -> System.out.println(person));
+
+        System.out.println("---- LISTADO DE DATOS PERSONA ----");
+        List<Object[]> listado = repository.obtenerPersonData("Java");
+        listado.stream().forEach(objects -> {
+            System.out.println(objects[0] + " es experto en " + objects[1] );
+        });
     }
 }
