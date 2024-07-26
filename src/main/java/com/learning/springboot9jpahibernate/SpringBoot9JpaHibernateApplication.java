@@ -26,9 +26,16 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        DTO();
+        DistinctLanguage();
     }
 
+    @Transactional(readOnly = true)
+    public void DistinctLanguage(){
+        List<String> languages = repository.findAllLanguage();
+        languages.forEach(s -> System.out.println(s));
+    }
+
+    @Transactional(readOnly = true)
     public void DTO(){
         List<PersonDTO> personDTO = repository.findAllPersonDTO();
         personDTO.forEach(System.out::println);

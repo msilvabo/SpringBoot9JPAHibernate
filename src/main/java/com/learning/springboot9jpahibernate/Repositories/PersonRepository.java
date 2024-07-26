@@ -10,6 +10,9 @@ import java.util.Optional;
 
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
+    @Query("select concat(p.programmingLanguage,'-',count(*)) from Person p group by p.programmingLanguage")
+    List<String> findAllLanguage();
+
     @Query("select new com.learning.springboot9jpahibernate.dto.PersonDTO(p.name, p.lastname) from Person p")
     List<PersonDTO> findAllPersonDTO();
 
