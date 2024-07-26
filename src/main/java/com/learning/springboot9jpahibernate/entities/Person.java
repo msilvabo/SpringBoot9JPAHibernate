@@ -2,6 +2,7 @@ package com.learning.springboot9jpahibernate.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="persons")
+@Builder
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")

@@ -22,7 +22,18 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        findOne(31);
+//        create();
+        list();
+    }
+
+    public void create(){
+        Person person = Person.builder()
+                .name("Moises")
+                .lastname("Silva")
+                .programmingLanguage("Java")
+                .build();
+
+        Person personNew = repository.save(person);
     }
 
     public void findOne(long id){
@@ -40,7 +51,7 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
 
     public void list(){
-        List<Person> persons = (List<Person>) repository.findByProgrammingLanguageAndName("Java", "Eve");
+        List<Person> persons = (List<Person>) repository.findByProgrammingLanguageAndName("Java", "Moises");
         System.out.println("---- LISTADO DE PERSONAS ----");
         persons.stream().forEach(person -> System.out.println(person));
 
