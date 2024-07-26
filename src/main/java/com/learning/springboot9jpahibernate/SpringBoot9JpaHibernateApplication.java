@@ -1,6 +1,7 @@
 package com.learning.springboot9jpahibernate;
 
 import com.learning.springboot9jpahibernate.Repositories.PersonRepository;
+import com.learning.springboot9jpahibernate.dto.PersonDTO;
 import com.learning.springboot9jpahibernate.entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,7 +26,12 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        personalizeQueries2();
+        DTO();
+    }
+
+    public void DTO(){
+        List<PersonDTO> personDTO = repository.findAllPersonDTO();
+        personDTO.forEach(System.out::println);
     }
 
     @Transactional(readOnly = true)

@@ -1,5 +1,6 @@
 package com.learning.springboot9jpahibernate.Repositories;
 
+import com.learning.springboot9jpahibernate.dto.PersonDTO;
 import com.learning.springboot9jpahibernate.entities.Person;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -8,6 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonRepository extends CrudRepository<Person, Long> {
+
+    @Query("select new com.learning.springboot9jpahibernate.dto.PersonDTO(p.name, p.lastname) from Person p")
+    List<PersonDTO> findAllPersonDTO();
 
     @Query("select new Person(p.name, p.lastname) from Person p")
     List<Person> findAllObjectPerzonaliredPerson();
