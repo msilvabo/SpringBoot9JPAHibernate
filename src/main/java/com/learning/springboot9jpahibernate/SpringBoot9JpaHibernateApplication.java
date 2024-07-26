@@ -25,7 +25,16 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        personalizeQueries();
+        personalizeQueries2();
+    }
+
+    @Transactional(readOnly = true)
+    public void personalizeQueries2() {
+        List<Object[]> data = repository.findAAllMixPerson();
+        data.stream().forEach(objects -> System.out.println(objects[0] + " -- " + objects[1]));
+
+        List<Person> listPerson = repository.findAllObjectPerzonaliredPerson();
+        listPerson.forEach(System.out::println);
     }
 
     @Transactional(readOnly = true)
