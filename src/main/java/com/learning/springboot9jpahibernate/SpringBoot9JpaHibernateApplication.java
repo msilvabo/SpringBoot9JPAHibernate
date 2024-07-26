@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -24,8 +25,20 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        delete();
-        listaCompleta();
+        personalizeQueries();
+    }
+
+    @Transactional(readOnly = true)
+    public void personalizeQueries()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese Id: ");
+        Long id = scanner.nextLong();
+        String name = repository.getNameById(id);
+        System.out.println("nombre: " + name);
+        System.out.println("Consulta personalizada...");
+        Object[] personReg = (Object[]) repository.obtenerPersonFullDataById(id);
+        System.out.println("id: " + personReg[0] + "   nombre " + personReg[1] + " " + personReg[2] + "   lenguaje " + personReg[3]);
     }
 
     @Transactional
