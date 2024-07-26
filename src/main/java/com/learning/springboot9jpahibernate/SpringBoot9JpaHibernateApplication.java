@@ -22,7 +22,7 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        findOne(3);
+        findOne(31);
     }
 
     public void findOne(long id){
@@ -34,7 +34,7 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 //        } else {
 //            System.out.println("Person not found");
 //        }
-        repository.findById(id).ifPresent(person -> System.out.println(person));
+        repository.findByNameContaining("an").ifPresent(person -> System.out.println(person));
 //        repository.findById(id).ifPresent(System.out::println);
     }
 
