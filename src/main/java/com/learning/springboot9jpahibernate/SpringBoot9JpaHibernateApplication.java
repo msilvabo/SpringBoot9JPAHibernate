@@ -24,7 +24,26 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        update();
+        delete();
+        listaCompleta();
+    }
+
+    @Transactional
+    public void delete(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el Id persona: ");
+        Long id = scanner.nextLong();
+        Optional<Person> optionalPerson = repository.findById(id);
+        if (optionalPerson.isPresent()){
+            Person person = optionalPerson.get();
+            System.out.println(person);
+            repository.delete(person);
+//            repository.deleteById(id);
+            System.out.println("Persona Eliminada");
+        } else{
+            System.out.println("No existe el usuario...");
+        }
+        scanner.close();
     }
 
     @Transactional
@@ -40,7 +59,7 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
             String programmingLanguage = scanner.next();
             person.setProgrammingLanguage(programmingLanguage);
             Person personDB = repository.save(person);
-            System.out.println("Actualiza11do " + personDB);
+            System.out.println("Actualizado " + personDB);
         } else{
             System.out.println("No existe el usuario...");
         }
@@ -95,5 +114,11 @@ public class SpringBoot9JpaHibernateApplication implements CommandLineRunner {
         listado.stream().forEach(objects -> {
             System.out.println(objects[0] + " es experto en " + objects[1] );
         });
+    }
+
+    @Transactional(readOnly = true)
+    public void listaCompleta(){
+        List<Person> persons = (List<Person>) repository.findAll();
+        persons.stream().forEach(person -> System.out.println(person));
     }
 }
